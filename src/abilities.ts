@@ -167,7 +167,8 @@ export class RevengeReflex extends BaseAbility {
 }
 
 
-// Registry – lista tuturor abilităților disponibile în joc.
+// Registry – vector de constructori,care at când sunt apelați cu new,
+// returnează un obiect de tip Ability
 export const ABILITY_REGISTRY: ReadonlyArray<new () => Ability> = [
   DamageReduction,
   PowerStrike,
@@ -175,7 +176,7 @@ export const ABILITY_REGISTRY: ReadonlyArray<new () => Ability> = [
   RevengeReflex,
 ];
 
-// Aleg o abilitate aleatorie din registry și returnez un obiect nou din ea.
+// Aleg aleatoriu un constructor din registry  și returnez un obiect de tip abilitate cu el.
 export function randomAbility(): Ability {
   const Ctor = ABILITY_REGISTRY[Math.floor(Math.random() * ABILITY_REGISTRY.length)];
   return new Ctor();
